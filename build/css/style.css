@@ -658,6 +658,10 @@ input {
   margin-top: 0.25rem;
 }
 
+.mt-auto {
+  margin-top: auto;
+}
+
 .flex {
   display: flex;
 }
@@ -770,6 +774,10 @@ input {
   min-width: 20rem;
 }
 
+.min-w-44 {
+  min-width: 11rem;
+}
+
 .max-w-28 {
   max-width: 7rem;
 }
@@ -788,6 +796,10 @@ input {
 
 .max-w-\[650px\] {
   max-width: 650px;
+}
+
+.max-w-44 {
+  max-width: 11rem;
 }
 
 .cursor-pointer {

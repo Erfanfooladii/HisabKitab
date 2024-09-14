@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+      @apply bg-gradient-to-r from-slate-400 to-blue-200
+    }
+    input{
+      @apply text-right
+    }
+    .none-scroolbar::-webkit-scrollbar{
+        display: none;
+    }
+    @font-face {
+      font-family: 'Vazir';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url(./assets/fonts/Vazir.woff2) format('woff2');
+    }
+}

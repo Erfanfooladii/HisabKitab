@@ -1,0 +1,170 @@
+{
+  "user": [
+    {
+      "id": "1",
+      "name": "erfan",
+      "date": "1403/2/3",
+      "phone_number": "09156632656",
+      "deviceـname": "دریل",
+      "description": "این یک دریل از من است"
+    },
+    {
+      "id": "394e",
+      "name": "erfan",
+      "phone_number": "sdfalfddfsfa",
+      "description": "sdajlaa",
+      "date": 31
+    },
+    {
+      "id": "f31b",
+      "name": "amir",
+      "phone_number": "sdf",
+      "description": "sdf",
+      "date": 1
+    },
+    {
+      "id": "a9bb",
+      "name": "erfan",
+      "phone_number": "6545",
+      "description": "sdf",
+      "date": 9
+    },
+    {
+      "id": "89f7",
+      "name": "erfanfooaldii",
+      "phone_number": "304958",
+      "date": 13
+    }
+  ],
+  "accounts": [
+    {
+      "id": "c0c0",
+      "name": "efdn",
+      "phone_number": "34093450",
+      "number_account": "393485",
+      "first_time": "2024-08-26T13:56:33.391Z",
+      "isDone": true,
+      "total": -441,
+      "list_accounts": [
+        {
+          "id": "44daf1a2-c1e1-4c16-8b86-3c87564db645",
+          "title": "ruh",
+          "value": "4",
+          "debtor": "3049",
+          "date": "2024-08-26T13:56:33.391Z",
+          "settlement": "3490"
+        },
+        {
+          "id": "0594b64d-b35a-44b6-8f7c-b292fdcba257",
+          "date": 8,
+          "title": "erfan fooladi",
+          "value": "34",
+          "debtor": "55",
+          "settlement": "343"
+        },
+        {
+          "id": "3869c845-4aa9-4d48-b21c-80f16899dc30",
+          "date": 5,
+          "title": "erfan",
+          "value": "3",
+          "debtor": "2000",
+          "settlement": "30000"
+        }
+      ]
+    },
+    {
+      "id": "fba4",
+      "name": "kdflal",
+      "phone_number": "34093450",
+      "number_account": "393485",
+      "first_time": "2024-08-26T13:56:41.366Z",
+      "isDone": false,
+      "total": -441,
+      "list_accounts": [
+        {
+          "id": "4105f6c8-59c4-43aa-85a4-6f593613b2ab",
+          "title": "ruhkfjf",
+          "value": "4",
+          "debtor": "3049",
+          "date": "2024-08-26T13:56:41.366Z",
+          "settlement": "3490"
+        }
+      ]
+    },
+    {
+      "id": "0247",
+      "name": "kdflal",
+      "phone_number": "34093450",
+      "number_account": "393485",
+      "first_time": "2024-08-26T13:56:44.229Z",
+      "isDone": false,
+      "total": -441,
+      "list_accounts": [
+        {
+          "id": "4105f6c8-59c4-43aa-85a4-6f593613b2ab",
+          "title": "ruhkfjf",
+          "value": "4",
+          "debtor": "3049",
+          "date": "2024-08-26T13:56:44.229Z",
+          "settlement": "3490"
+        }
+      ]
+    },
+    {
+      "id": "e19b",
+      "name": "kdflal",
+      "phone_number": "34093450",
+      "number_account": "393485",
+      "first_time": "2024-08-26T13:56:45.331Z",
+      "isDone": false,
+      "total": -441,
+      "list_accounts": [
+        {
+          "id": "4105f6c8-59c4-43aa-85a4-6f593613b2ab",
+          "title": "ruhkfjf",
+          "value": "4",
+          "debtor": "3049",
+          "date": "2024-08-26T13:56:45.331Z",
+          "settlement": "3490"
+        }
+      ]
+    },
+    {
+      "id": "1b60",
+      "name": "kdflal",
+      "phone_number": "34093450",
+      "number_account": "393485",
+      "first_time": "2024-08-26T13:56:48.686Z",
+      "isDone": false,
+      "total": -441,
+      "list_accounts": [
+        {
+          "id": "e5adbeea-8807-40b3-9b97-1ea716b4b3e3",
+          "title": "ruhkfjf",
+          "value": "4",
+          "debtor": "3049",
+          "date": "2024-08-26T13:56:48.686Z",
+          "settlement": "3490"
+        }
+      ]
+    }
+  ],
+  "specifications_list": [
+    {
+      "id": "1",
+      "name": "اب شرین کن",
+      "diameter_size": "۳۳",
+      "length_size": "۴۳",
+      "three_phases": false,
+      "number_laps_main": "۵۴۵",
+      "number_laps_start": "",
+      "cross_section_main": "۲",
+      "cross_section_start": "",
+      "coil_group_main": "۵",
+      "coil_group_start": "",
+      "number_grooves": "۵۴",
+      "horse_power": "۲",
+      "headـtype": "سربه ته"
+    }
+  ]
+}

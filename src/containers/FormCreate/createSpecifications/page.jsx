@@ -4,10 +4,10 @@ import getApi from "../../../api/getApi";
 import { toPersianNumber } from "../../../utilities/numberConvert";
 import { v4 as uuidv4 } from 'uuid';
 import InputSpecifications from "../../../components/inputs/inputSpecifications/createForm/page";
+import { toast, ToastContainer } from "react-toastify";
 
 const CreateSpecifications=()=>{
     const [data,setData]=useState([])
-    const [display,setDisplay]=useState(false)
     const [name,setName]=useState("")
     const [diameter_size,setDiameter_size]=useState("")
     const [length_size,setLength_size]=useState("")
@@ -28,7 +28,7 @@ const CreateSpecifications=()=>{
         name: name,
         diameter_size: diameter_size,
         length_size: length_size,
-        three_phases: display,
+        three_phases: three_phases,
         number_laps_main: number_laps_main,
         number_laps_start: number_laps_start,
         cross_section_main: cross_section_main,
@@ -46,35 +46,64 @@ const CreateSpecifications=()=>{
     const postData=async()=>{
         const postApi=await api.post('/specifications_list',objectData)
     }
+    const formHandle = (e) => {
+        e.preventDefault();
+        if (
+            name === "" ||
+            diameter_size === "" ||
+            length_size === "" ||
+            number_laps_main === "" ||
+            three_phases ? number_laps_start ==="" : null ||
+            coil_group_main === "" ||
+            three_phases ? coil_group_start === "" : null ||
+            horse_power === ""||
+            head_type === ""
+        ) {
+            toast('لطفا تمام فیلد ها را پر کنید!')
+            return null;
+        } else {
+            toast('مشخصات دستگاه با موفقیت ثبت شد.')
+            console.log("yes");
+        }
+    };
+    
     useEffect(()=>{
         getData()
     },[])
-    console.log(data);
     return(
         <>
+            <ToastContainer rtl />
             <div className="">
-                <h2 className="text-white">ثبت مشخصات دستگاه</h2>
-                <form className="p-2 flex flex-wrap justify-center gap-2">
-                    <InputSpecifications setChange={toPersianNumber((e)=>setName(e.target.value))} title="نام وسیله" />
-                    <InputSpecifications setChange={toPersianNumber((e)=>setDiameter_size(e.target.value))} title="فطر هسته" />
-                    <InputSpecifications setChange={toPersianNumber((e)=>setLength_size(e.target.value))} title="طول هسته" />
-                    <InputSpecifications setChange={toPersianNumber((e)=>setNumber_laps_main(e.target.value))} title="تعداد دور سیم پیچ اصلی" />
-                    <InputSpecifications setChange={toPersianNumber((e)=>setNumber_laps_start(e.target.value))} title="تعداد دور سیم پیچ راه انداز" />
-                    <InputSpecifications setChange={toPersianNumber((e)=>setCross_section_main(e.target.value))} title="سطح مقطع سیم اصلی" />
-                    <InputSpecifications setChange={toPersianNumber((e)=>setCross_section_start(e.target.value))} title="سطح مقطع سیم راه انداز" />
-                    <InputSpecifications setChange={toPersianNumber((e)=>setCoil_group_main(e.target.value))} title="تعداد گروه سیم پیچ اصلی" />
-                    <InputSpecifications setChange={toPersianNumber((e)=>setCoil_group_start(e.target.value))} title="تعداد گروه سیم پیچ راه انداز" />
-                    <InputSpecifications setChange={toPersianNumber((e)=>setNumber_grooves(e.target.value))} title="تعداد شیار هسته" />
-                    <InputSpecifications setChange={toPersianNumber((e)=>setName(e.target.value))} title="(hp)قدرت بر حسب اسب بخار" />
-                    <InputSpecifications setChange={toPersianNumber((e)=>setName(e.target.value))} title="نوع سربندی" />
+                <h2 className="text-white text-center text-xl py-2">ثبت مشخصات دستگاه</h2>
+                <form onSubmit={formHandle} className="p-2 flex flex-wrap justify-center gap-2">
+                    <InputSpecifications setChange={(e)=>toPersianNumber(setDiameter_size(e.target.value))} title="فطر هسته" />
+                    <InputSpecifications setChange={(e)=>toPersianNumber(setName(e.target.value))} title="نام وسیله" />
+                    <InputSpecifications setChange={(e)=>toPersianNumber(setLength_size(e.target.value))} title="طول هسته" />
+                    <InputSpecifications setChange={(e)=>toPersianNumber(setNumber_laps_main(e.target.value))} title="تعداد دور سیم پیچ اصلی" />
+                    {
+                        three_phases ? null : <InputSpecifications setChange={(e)=>toPersianNumber(setNumber_laps_start(e.target.value))} title="تعداد دور سیم پیچ راه انداز" />
+                    }
+                    <InputSpecifications setChange={(e)=>toPersianNumber(setCross_section_main(e.target.value))} title="سطح مقطع سیم اصلی" />
+                    {
+                        three_phases ? null : <InputSpecifications setChange={(e)=>toPersianNumber(setCross_section_start(e.target.value))} title="سطح مقطع سیم راه انداز" />
+                    }
+                    <InputSpecifications setChange={(e)=>toPersianNumber(setCoil_group_main(e.target.value))} title="تعداد گروه سیم پیچ اصلی" />
+                    {
+                        three_phases ? null : <InputSpecifications setChange={(e)=>toPersianNumber(setCoil_group_start(e.target.value))} title="تعداد گروه سیم پیچ راه انداز" />
+                    }
+                    <InputSpecifications setChange={(e)=>toPersianNumber(setNumber_grooves(e.target.value))} title="تعداد شیار هسته" />
+                    <InputSpecifications setChange={(e)=>toPersianNumber(setName(e.target.value))} title="(hp)قدرت بر حسب اسب بخار" />
+                    <InputSpecifications setChange={(e)=>toPersianNumber(setName(e.target.value))} title="نوع سربندی" />
                     <div className="w-full flex justify-center items-center flex-col gap-2">
-                        <label htmlFor="phases">
-                            {
-                                three_phases ? 'سه فاز':'تک فاز'
-                            }
-                        </label>
-                        <input type="checkbox" id="phases" className="" />
-                        <button className="p-2 mt-auto bg-green-500 rounded-md shadow-md hover:bg-green-600 min-w-44">
+                        <div className="flex gap-1">
+                            <label htmlFor="phases">
+                                {
+                                    three_phases ? 'سه فاز':'تک فاز'
+                                }
+                            </label>
+                            <input onClick={()=>setThree_phases(!three_phases)} type="checkbox" id="phases" className="" />
+                        </div>
+                        <button type="submit" className="p-2 mt-auto bg-green-500 rounded-md shadow-md hover:bg-green-600 min-w-44">
                             تبت وسیله
                         </button>
                     </div>

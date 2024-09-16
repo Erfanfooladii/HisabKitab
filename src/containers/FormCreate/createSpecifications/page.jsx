@@ -48,22 +48,11 @@ const CreateSpecifications=()=>{
     }
     const formHandle = (e) => {
         e.preventDefault();
-        if (
-            name === "" ||
-            diameter_size === "" ||
-            length_size === "" ||
-            number_laps_main === "" ||
-            three_phases ? number_laps_start ==="" : null ||
-            coil_group_main === "" ||
-            three_phases ? coil_group_start === "" : null ||
-            horse_power === ""||
-            head_type === ""
-        ) {
-            toast('لطفا تمام فیلد ها را پر کنید!')
-            return null;
-        } else {
-            toast('مشخصات دستگاه با موفقیت ثبت شد.')
+        if (name == "" | diameter_size=="" | length_size=="" | number_laps_main=="" | number_laps_start=="") {
+            console.log("eosndf");
+        }else{
             console.log("yes");
+            
         }
     };
     

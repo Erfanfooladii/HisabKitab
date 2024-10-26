@@ -5,12 +5,12 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from "react-router-dom";
-
+import useData from "../../../Reducers/dataSaveApi";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const CreateAccount=()=>{
     const unickId=uuidv4()
     const navigate=useNavigate()
-    const [id, setId] = useState();
     const [name, setName] = useState("");
     const [phone_number, setPhone_number] = useState("");
     const [number_account, setNumber_account] = useState("");
@@ -20,13 +20,16 @@ const CreateAccount=()=>{
     const [settlement, setSettlement] = useState("");
     const [isDone, setIsDone] = useState(false);
     const [data,setData]=useState([])
-
+    const add=useData((state)=> state.addData)
+    const dataZ=useData((state)=> state.data)
+    const queryClient= useQueryClient()
+    
     const createAccount = async () => {
         const date = new Date();
         const total = debtor - settlement;
         try {
             const postData = await api.post('accounts/', {
-                id:id,
+                id,
                 name,
                 phone_number,
                 number_account,
@@ -45,11 +48,18 @@ const CreateAccount=()=>{
                 ]
             });
             console.log('Post Data:', postData);
+            add(postData)
             return postData;
         } catch (error) {
             console.error('Error:', error.response ? error.response.data : error.message);
         }
     };
+    const addItemnn=useMutation({
+        mutationFn:createAccount,
+        onSuccess:()=>{
+            queryClient.invalidateQueries(['accounts'])
+        }
+    })
     const getData=async () => {
         try {
             const res= (await api.get('accounts/')).data
@@ -62,9 +72,10 @@ const CreateAccount=()=>{
     }
     useEffect(()=>{
         getData()
-        console.log('datas:',data);
-        
+        add(data)
+        console.log("save data",dataZ[0]);
     },[])
+    const [itemName, setItemName] = useState('');
 
     const submitedForm =(e) => {
         if (name == "" || phone_number == "" || number_account == "" || title == "") {
@@ -84,7 +95,8 @@ const CreateAccount=()=>{
                 }
             }
             toast("حساب با موفقیت ثبت شد")
-            createAccount()
+            addItemnn.mutate({ name: itemName})
+            setItemName("")            
         }
     };
 
